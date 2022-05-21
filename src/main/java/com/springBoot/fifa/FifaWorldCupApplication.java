@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import service.JpaStadiumDao;
+import service.StadiumDao;
 import service.VoetbalServiceImpl;
 import validator.WedstrijdTicketValidation;
 import validator.WedstrijdValidation;
@@ -13,6 +15,11 @@ import validator.WedstrijdValidation;
 @SpringBootApplication
 public class FifaWorldCupApplication implements WebMvcConfigurer{
 
+	@Bean
+	public StadiumDao stadiumDao() {
+		return new JpaStadiumDao();
+	}
+	
 	@Bean
 	public VoetbalServiceImpl helloService() {
 	return new VoetbalServiceImpl();

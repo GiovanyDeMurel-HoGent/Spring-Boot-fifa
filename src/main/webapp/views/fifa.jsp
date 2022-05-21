@@ -9,17 +9,19 @@
 </head>
 <body>
 	
-	<form:form method="POST" action="stadium"
-		modelAttribute="stadiumCommand">
-		Choose color:
-	<form:select path="stadiumSelected"
+	<H2>${stadiumList}"</H2>
+	
+	 <form:form method="POST" action="stadium"
+		modelAttribute="stadiumList">
+		
+ 	<form:select path=""
 		multiple="false">
 
 	<form:options items="${stadiumList}"/>
 	</form:select>
 	<input type="submit" value="OK"/>
 	</form:form>
-		
+	
 	
 
 </body>
