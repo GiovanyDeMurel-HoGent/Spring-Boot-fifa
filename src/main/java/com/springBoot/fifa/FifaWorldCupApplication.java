@@ -16,9 +16,14 @@ import validator.WedstrijdValidation;
 public class FifaWorldCupApplication implements WebMvcConfigurer{
 
 	@Bean
-	public StadiumDao stadiumDao() {
+	public JpaStadiumDao stadiumDao() {
 		return new JpaStadiumDao();
 	}
+	
+//	@Bean
+//	public JpaStadiumDao JpaStadiumDao() {
+//		return new JpaStadiumDao();
+//	}
 	
 	@Bean
 	public VoetbalServiceImpl helloService() {

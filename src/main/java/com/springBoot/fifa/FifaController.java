@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 import domain.Stadium;
+import service.JpaStadiumDao;
 import service.StadiumDao;
 import service.VoetbalServiceImpl;
 
@@ -24,7 +25,11 @@ public class FifaController {
 //	private ExpertBean expertBean;
 	
 	@Autowired
-	private StadiumDao stadiumDao;
+	private JpaStadiumDao stadiumDao;
+	
+	
+//	@Autowired
+//	private StadiumDao jpaStadiumDao;
 	
 	private StadiumCommand stadiumCommand;
 
