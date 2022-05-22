@@ -5,9 +5,12 @@ import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -15,8 +18,13 @@ import javax.persistence.Table;
 //Een wedstrijd
 @Entity
 @NamedQueries({
+//	@NamedQuery(name="Wedstrijd.getAllWedstrijdenByStadiumId", 
+//			query = "SELECT w FROM Wedstrijd w JOIN w.stadium WHERE w.stadium_id = :stadium_id"
+//					+ "ORDER BY w.wedstrijd_id")})
 	@NamedQuery(name="Wedstrijd.getAllWedstrijdenByStadiumId", 
-			query = "SELECT w FROM Wedstrijd w ORDER BY w.wedstrijd_id")})
+			query = "SELECT w FROM Wedstrijd w WHERE w.stadium_id = :stadium_id "
+					+ "ORDER BY w.wedstrijd_id")
+	})
 @Table(name = "wedstrijd")
 public class Wedstrijd implements Serializable{
 	
@@ -29,16 +37,29 @@ public class Wedstrijd implements Serializable{
     private String land1, land2; //2 landen van de wedstrijd
     
     private Date datetime;
+    
+    private Long stadium_id;
 
+    public Long getStadium_id() {
+		return stadium_id;
+	}
+	public void setStadium_id(Long stadium_id) {
+		this.stadium_id = stadium_id;
+	}
+
+//	@ManyToOne(fetch = FetchType.EAGER)
+//    private Stadium stadium;
+    
     protected Wedstrijd() {
     	
     }
-	public Wedstrijd(Long wedstrijd_id, String land1, String land2, Date datetime) {
+	public Wedstrijd(Long wedstrijd_id, String land1, String land2, Date datetime, Long stadium_id) {
 		super();
 		this.wedstrijd_id = wedstrijd_id;
 		this.land1 = land1;
 		this.land2 = land2;
 		this.datetime = datetime;
+		this.stadium_id = stadium_id;
 	}
 
 	public Long getWedstrijd_id() {
@@ -76,7 +97,7 @@ public class Wedstrijd implements Serializable{
 	@Override
 	public String toString() {
 		return "Wedstrijd [wedstrijd_id=" + wedstrijd_id + ", land1=" + land1 + ", land2=" + land2 + ", datetime="
-				+ datetime + "]";
+				+ datetime + ", stadium_id=" + stadium_id + "]";
 	}
 
 	@Override
