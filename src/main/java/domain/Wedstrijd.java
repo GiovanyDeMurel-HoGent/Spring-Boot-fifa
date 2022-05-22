@@ -1,7 +1,11 @@
 package domain;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -14,6 +18,7 @@ import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 //Een wedstrijd
 @Entity
@@ -36,7 +41,15 @@ public class Wedstrijd implements Serializable{
 
     private String land1, land2; //2 landen van de wedstrijd
     
-    private Date datetime;
+    private Timestamp datetime;
+   
+    @Transient
+    private String datum;
+    @Transient
+    private String aftrap;
+    //change
+    @Transient
+    private int tickets;
     
     private Long stadium_id;
 
@@ -46,20 +59,39 @@ public class Wedstrijd implements Serializable{
 	public void setStadium_id(Long stadium_id) {
 		this.stadium_id = stadium_id;
 	}
-
-//	@ManyToOne(fetch = FetchType.EAGER)
-//    private Stadium stadium;
     
     protected Wedstrijd() {
     	
     }
-	public Wedstrijd(Long wedstrijd_id, String land1, String land2, Date datetime, Long stadium_id) {
+	public Wedstrijd(Long wedstrijd_id, String land1, String land2, Timestamp datetime, Long stadium_id) {
 		super();
 		this.wedstrijd_id = wedstrijd_id;
 		this.land1 = land1;
 		this.land2 = land2;
 		this.datetime = datetime;
 		this.stadium_id = stadium_id;
+	}
+	
+	public String getDatum() {
+		Date date = new Date(datetime.getTime());
+		String datepattern = "dd MMMM ";
+		SimpleDateFormat dateformatter = new SimpleDateFormat(datepattern, new Locale("nl", "BE"));
+		String datum=dateformatter.format(date);
+		return datum;
+	}
+	private void setDatum(String datum) {
+		this.datum = datum;
+	}
+	
+	public String getAftrap() {
+		Date date = new Date(datetime.getTime());
+		String datepattern = "k:mm";
+		SimpleDateFormat dateformatter = new SimpleDateFormat(datepattern);
+		String aftrap=dateformatter.format(date);
+		return aftrap;
+	}
+	private void setAftrap(String aftrap) {
+		this.aftrap = aftrap;
 	}
 
 	public Long getWedstrijd_id() {
@@ -86,13 +118,10 @@ public class Wedstrijd implements Serializable{
 		this.land2 = land2;
 	}
 
-	public Date getDatetime() {
+	public Timestamp getDatetime() {
 		return datetime;
 	}
 
-	public void setDatetime(Date datetime) {
-		this.datetime = datetime;
-	}
 
 	@Override
 	public String toString() {

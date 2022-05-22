@@ -5,14 +5,19 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Beer Selection Advice</title>
+<title>Stadium placeholder</title>
 </head>
 
 <body>
 	<h2>${stadium.name}</h2>
 	<p>Lijst van wedstrijden in dit stadium:<p>
 	<br>	
-	<c:forEach var="wedstrijd" items="${wedstrijden}"><br>${wedstrijd}</c:forEach>
+	<c:forEach var="wedstrijd" items="${wedstrijden}">
+		<li>
+			<a href="http://localhost:8080/stadiumView/${wedstrijd.wedstrijd_id}">
+				${wedstrijd.wedstrijd_id}
+			</a>${wedstrijd.land1} ${wedstrijd.land2} ${wedstrijd.datetime} ${wedstrijd.datum}  ${wedstrijd.aftrap}</li>
+	</c:forEach>
 
 </body>
 </html>
