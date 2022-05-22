@@ -3,6 +3,9 @@ package com.springBoot.fifa;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import domain.Stadium;
 import service.JpaStadiumDao;
@@ -22,6 +26,7 @@ import service.VoetbalServiceImpl;
 import service.WedstrijdDao;
 
 @Controller
+//@SessionAttributes("stadium")
 @RequestMapping("/fifa")
 public class FifaController {
 	
@@ -57,13 +62,21 @@ public class FifaController {
 //		model.addAttribute("stadium", new Stadium());
 //		return "stadiumView";
 //	}
-	
+//	
 	@PostMapping()
-	public String onSubmit(@ModelAttribute Stadium stadium, BindingResult result,
+	public String onSubmit(HttpSession session, @ModelAttribute Stadium stadium, BindingResult result, 
 		Model model) {
-		System.out.println(stadium.getStadium_id());
-		model.addAttribute("stadium", stadiumDao.get(stadium.getStadium_id()));
-		return "stadiumView";
+		session.setAttribute("stadium", stadiumDao.get(stadium.getStadium_id()));
+		//model.addAttribute("stadium", stadiumDao.get(stadium.getStadium_id()));
+		return "redirect:/stadiumView";
 	}
+	
+//	@PostMapping()
+//	public String onSubmit(@ModelAttribute("stadium") Stadium stadium, BindingResult result,
+//		Model model, HttpServletRequest request, SessionStatus status) {
+//		model.addAttribute("stadium", stadiumDao.get(stadium.getStadium_id()));
+//		status.setComplete();
+//		return "stadiumView";
+//	}
 	
 }

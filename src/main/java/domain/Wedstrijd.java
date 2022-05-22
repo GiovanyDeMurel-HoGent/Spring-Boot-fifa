@@ -8,10 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 //Een wedstrijd
 @Entity
+@NamedQueries({
+	@NamedQuery(name="Wedstrijd.getAllWedstrijdenByStadiumId", 
+			query = "SELECT w FROM Wedstrijd w ORDER BY w.wedstrijd_id")})
 @Table(name = "wedstrijd")
 public class Wedstrijd implements Serializable{
 	
@@ -25,6 +30,9 @@ public class Wedstrijd implements Serializable{
     
     private Date datetime;
 
+    protected Wedstrijd() {
+    	
+    }
 	public Wedstrijd(Long wedstrijd_id, String land1, String land2, Date datetime) {
 		super();
 		this.wedstrijd_id = wedstrijd_id;

@@ -2,6 +2,8 @@ package service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -16,9 +18,15 @@ public class JpaWedstrijdDao extends GenericDaoJpa<Wedstrijd> implements Wedstri
 		super(Wedstrijd.class);
 	}
 	
+	@PersistenceContext
+	private EntityManager em;
+	
+	@Override
 	@Transactional(readOnly = true)
 	public List<Wedstrijd> getAllWedstrijdenByStadiumId(Long id) {
 		TypedQuery<Wedstrijd> query = em.createNamedQuery("Wedstrijd.getAllWedstrijdenByStadiumId", Wedstrijd.class);
 		return query.getResultList();
 	}
+	
+	
 }
