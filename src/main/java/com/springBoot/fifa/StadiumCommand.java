@@ -11,4 +11,6 @@ public class StadiumCommand {
 	public void setStadiumSelected(String stadiumSelected) {
 		this.stadiumSelected = stadiumSelected;
 	}
+	
+	
 }

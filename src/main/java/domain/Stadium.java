@@ -15,10 +15,6 @@ import javax.persistence.Table;
 import service.VoetbalServiceImpl;
 
 @Entity
-@NamedQueries({
-	@NamedQuery(name="Stadium.findAll", 
-		query = "SELECT s FROM Stadium s ORDER BY s.stadium_id")
-})
 @Table(name = "stadium")
 public class Stadium implements Serializable {
 
@@ -30,12 +26,28 @@ public class Stadium implements Serializable {
 	
 	private String name;
 	
-	protected Stadium() {
+	public Stadium() {
 		
 	}
 	
-	public Long getID() {
+//	public Long getID() {
+//		return stadium_id;
+//	}
+
+	public Long getStadium_id() {
 		return stadium_id;
+	}
+
+	public void setStadium_id(Long stadium_id) {
+		this.stadium_id = stadium_id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	@Override

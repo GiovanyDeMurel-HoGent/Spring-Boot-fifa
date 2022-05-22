@@ -17,8 +17,8 @@ public class WedstrijdController {
 	private WedstrijdValidation wedstrijdValidation;
 	
 	@GetMapping
-	public String showHomePage(Model model) {
-		model.addAttribute("wedstrijd", new Wedstrijd());
+	public String showWedstrijdPage(Model model) {
+		//model.addAttribute("wedstrijd", new Wedstrijd());
 		return "wedstrijd";
 	}
 }

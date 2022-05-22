@@ -9,15 +9,15 @@
 </head>
 <body>
 	
-	<H2>${stadiumList}"</H2>
+	<H2>${stadiumList}</H2>
 	
-	 <form:form method="POST" action="stadium"
-		modelAttribute="stadiumList">
+	 <form:form method="POST" action="fifa"
+		modelAttribute="stadium">
 		
- 	<form:select path=""
+ 	<form:select path="stadium_id"
 		multiple="false">
-
-	<form:options items="${stadiumList}"/>
+<!-- itemValue="stadium_id" -->
+	<form:options items="${stadiumList}" itemLabel="name" itemValue="stadium_id"/>
 	</form:select>
 	<input type="submit" value="OK"/>
 	</form:form>

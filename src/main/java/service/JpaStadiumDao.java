@@ -11,22 +11,24 @@ import org.springframework.transaction.annotation.Transactional;
 
 import domain.Stadium;
 
-@Repository("stadiumDaoDao")
-public class JpaStadiumDao extends GenericDaoJpa {
+@Repository("stadiumDao")
+public class JpaStadiumDao extends GenericDaoJpa<Stadium> implements StadiumDao{
 
 	public JpaStadiumDao() {
 		super(Stadium.class);
 	}
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Stadium> findAll() {
-		TypedQuery<Stadium> query = em.createNamedQuery("Stadium.findAll", Stadium.class);
-		return query.getResultList();
-	}
+//	@Override
+//	@Transactional(readOnly = true)
+//	public List<Stadium> findAll() {
+//		TypedQuery<Stadium> query = em.createNamedQuery("Stadium.findAll", Stadium.class);
+//		return query.getResultList();
+//	}
 	
-//	@PersistenceContext
-//	private EntityManager em;
+	
+	
+	@PersistenceContext
+	private EntityManager em;
 //	
 //	@Override
 //	@Transactional(readOnly = true)
