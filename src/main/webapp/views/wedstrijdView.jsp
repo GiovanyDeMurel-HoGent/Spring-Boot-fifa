@@ -22,6 +22,7 @@
     </p>
 	<p><label>Tickets:</label>
         <form:input path="tickets"/>
+        <form:errors path="tickets" cssClass="error"/>
     </p>    
 	<p><label>VoetbalCode1:</label>
         <form:input path="voetbalCode1"/>

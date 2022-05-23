@@ -31,6 +31,7 @@ public class FifaController {
 	@PostMapping()
 	public String onSubmit(HttpSession session, @ModelAttribute Stadium stadium, BindingResult result, 
 		Model model) {
+		
 		session.setAttribute("stadium", stadiumDao.get(stadium.getStadium_id()));
 		//session.setAttribute("aantalGekochteTickets", "");
 		return String.format("redirect:/%s", session.getAttribute("stadium").toString().replaceAll("\\s", "").replace("Stadium", ""));

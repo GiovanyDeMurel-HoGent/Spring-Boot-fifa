@@ -20,7 +20,7 @@
 			 >
 			<c:param name="id" value="${wedstrijd.wedstrijd_id}"></c:param>
 		</c:url>
-		<h4><a href="${wedstrijdUrl}">${wedstrijd.wedstrijd_id}</a></h4>
+		<h4><a href="${wedstrijdUrl}">${wedstrijd.wedstrijd_id}</a>${wedstrijd.land1}-${wedstrijd.land2} ${wedstrijd.datum} ${wedstrijd.aftrap} ${wedstrijd.tickets}</h4>
 		</li>
 
 	</c:forEach>
