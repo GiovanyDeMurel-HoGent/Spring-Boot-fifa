@@ -38,6 +38,10 @@ public class Wedstrijd implements Serializable{
     private String datum;
     @Transient
     private String aftrap;
+    @Transient
+    private String voetbalCode1;
+    @Transient
+    private String voetbalCode2;
     
     private Long stadium_id;
     private int tickets;
@@ -53,13 +57,14 @@ public class Wedstrijd implements Serializable{
     	
     }
     
-	public Wedstrijd(Long wedstrijd_id, String land1, String land2, Timestamp datetime, Long stadium_id) {
+	public Wedstrijd(Long wedstrijd_id, String land1, String land2, Timestamp datetime, Long stadium_id, int tickets) {
 		super();
 		this.wedstrijd_id = wedstrijd_id;
 		this.land1 = land1;
 		this.land2 = land2;
 		this.datetime = datetime;
 		this.stadium_id = stadium_id;
+		this.tickets = tickets;
 	}
 	
 	public String getDatum() {

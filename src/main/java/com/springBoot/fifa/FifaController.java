@@ -33,7 +33,7 @@ public class FifaController {
 		Model model) {
 		session.setAttribute("stadium", stadiumDao.get(stadium.getStadium_id()));
 		//session.setAttribute("aantalGekochteTickets", "");
-		return String.format("redirect:/%s", session.getAttribute("stadium").toString().replaceAll("\\s", "").replace("Stadium", ""));
+		return String.format("redirect:/%s", model.getAttribute("stadium").toString().replaceAll("\\s", "").replace("Stadium", ""));
 	}
 	
 }

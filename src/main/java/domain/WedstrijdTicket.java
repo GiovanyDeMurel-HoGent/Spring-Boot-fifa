@@ -7,17 +7,13 @@ public class WedstrijdTicket {
 
     private int tickets; //aantal tickets beschikbaar
 
-    public WedstrijdTicket(Wedstrijd wedstrijd, int tickets) {
+    public WedstrijdTicket(Wedstrijd wedstrijd) {
         this.wedstrijd = wedstrijd;
-        this.tickets = tickets;
+        //this.tickets = wedstrijd.getTickets();
     }
 
     public int getTickets() {
         return tickets;
-    }
-    
-    public Wedstrijd getWedstrijd() {
-        return wedstrijd;
     }
     
     //We willen 'aantal' tickets kopen
@@ -41,4 +37,9 @@ public class WedstrijdTicket {
     public boolean uitverkocht() {
         return tickets == 0;
     }
+
+	public void setConfirmPassword(Object object) {
+		// TODO Auto-generated method stub
+		
+	}
 }
