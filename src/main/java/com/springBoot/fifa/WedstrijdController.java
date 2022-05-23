@@ -10,7 +10,7 @@ import domain.Wedstrijd;
 import validator.WedstrijdValidation;
 
 @Controller
-@RequestMapping("/wedstrijd")
+@RequestMapping("*/*")
 public class WedstrijdController {
 
 	@Autowired
@@ -19,6 +19,6 @@ public class WedstrijdController {
 	@GetMapping
 	public String showWedstrijdPage(Model model) {
 		//model.addAttribute("wedstrijd", new Wedstrijd());
-		return "wedstrijd";
+		return "wedstrijdView";
 	}
 }
