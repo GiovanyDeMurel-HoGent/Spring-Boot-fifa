@@ -20,7 +20,7 @@ import service.WedstrijdDao;
 
 @Controller
 @SessionAttributes("stadium")
-@RequestMapping("/stadiumView")
+@RequestMapping("/*")
 public class StadiumController {
 
 	@Autowired

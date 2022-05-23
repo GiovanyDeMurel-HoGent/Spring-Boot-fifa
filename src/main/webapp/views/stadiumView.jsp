@@ -16,7 +16,7 @@
 		<li>
 			<a href="http://localhost:8080/stadiumView/${wedstrijd.wedstrijd_id}">
 				${wedstrijd.wedstrijd_id}
-			</a>${wedstrijd.land1} ${wedstrijd.land2} ${wedstrijd.datetime} ${wedstrijd.datum}  ${wedstrijd.aftrap}</li>
+			</a>${wedstrijd.land1} ${wedstrijd.land2} ${wedstrijd.datetime} ${wedstrijd.datum}  ${wedstrijd.aftrap} ${wedstrijd.tickets}</li>
 	</c:forEach>
 
 </body>

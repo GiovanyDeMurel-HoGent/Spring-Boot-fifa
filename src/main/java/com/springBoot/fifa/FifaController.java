@@ -68,7 +68,7 @@ public class FifaController {
 		Model model) {
 		session.setAttribute("stadium", stadiumDao.get(stadium.getStadium_id()));
 		//model.addAttribute("stadium", stadiumDao.get(stadium.getStadium_id()));
-		return "redirect:/stadiumView";
+		return String.format("redirect:/%s", session.getAttribute("stadium").toString().replaceAll("\\s", "").replaceAll("Stadium", ""));
 	}
 	
 //	@PostMapping()

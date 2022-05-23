@@ -47,9 +47,10 @@ public class Wedstrijd implements Serializable{
     private String datum;
     @Transient
     private String aftrap;
-    //change
-    @Transient
-    private int tickets;
+    
+ 
+
+	private int tickets;
     
     private Long stadium_id;
 
@@ -79,9 +80,6 @@ public class Wedstrijd implements Serializable{
 		String datum=dateformatter.format(date);
 		return datum;
 	}
-	private void setDatum(String datum) {
-		this.datum = datum;
-	}
 	
 	public String getAftrap() {
 		Date date = new Date(datetime.getTime());
@@ -90,8 +88,9 @@ public class Wedstrijd implements Serializable{
 		String aftrap=dateformatter.format(date);
 		return aftrap;
 	}
-	private void setAftrap(String aftrap) {
-		this.aftrap = aftrap;
+	
+	public int getTickets() {
+		return tickets;
 	}
 
 	public Long getWedstrijd_id() {
@@ -145,44 +144,5 @@ public class Wedstrijd implements Serializable{
 		Wedstrijd other = (Wedstrijd) obj;
 		return Objects.equals(wedstrijd_id, other.wedstrijd_id);
 	}
-    
-    
-    
-    //private int dag; //dag van de wedstrijd
-
-    //private int uur; //uur van de wedstrijd
-
-//    public Wedstrijd() {
-//    }
-//
-//    public Wedstrijd(String id, String[] landen, int dag, int uur) {
-//        this.id = id;
-//        this.landen = landen;
-//        this.dag = dag;
-//        this.uur = uur;
-//    }
-//
-//    public String getWedstrijd_Id() {
-//        return id;
-//    }
-//
-//    public String[] getLanden() {
-//        return landen;
-//    }
-//
-//    public int getDag() {
-//        return dag;
-//    }
-//
-//    public int getUur() {
-//        return uur;
-//    }
-    
-//    @Override
-//    public String toString()
-//    {
-//        return String.format("%s vs %s op %d-11", landen[0], landen[1], dag); 
-//    }
-
 
 }
