@@ -14,10 +14,20 @@
 	<br>	
 	<c:forEach var="wedstrijd" items="${wedstrijden}">
 		<li>
-			<a href="http://localhost:8080/${stadiumUrlName}/${wedstrijd.land1}-${wedstrijd.land2}">
-				${wedstrijd.wedstrijd_id}
-			</a>${wedstrijd.land1} ${wedstrijd.land2} ${wedstrijd.datetime} ${wedstrijd.datum}  ${wedstrijd.aftrap} ${wedstrijd.tickets}</li>
+			<c:url value="http://localhost:8080/${stadiumUrlName}/${wedstrijd.land1}-${wedstrijd.land2}"
+			 var="wedstrijdUrl"
+			 scope="page"
+			 >
+			<c:param name="id" value="${wedstrijd.wedstrijd_id}"></c:param>
+		</c:url>
+		<h4><a href="${wedstrijdUrl}">${wedstrijd.wedstrijd_id}</a></h4>
+		</li>
+
 	</c:forEach>
 
 </body>
 </html>
+
+<%-- 			<a href="http://localhost:8080/${stadiumUrlName}/?id=${wedstrijd.wedstrijd_id}/${wedstrijd.land1}-${wedstrijd.land2}"> --%>
+<%-- 				${wedstrijd.wedstrijd_id} --%>
+<%-- 			</a>${wedstrijd.land1} ${wedstrijd.land2} ${wedstrijd.datetime} ${wedstrijd.datum}  ${wedstrijd.aftrap} ${wedstrijd.tickets}</li> --%>

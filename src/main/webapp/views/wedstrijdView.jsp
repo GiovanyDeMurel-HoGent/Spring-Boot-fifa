@@ -9,8 +9,8 @@
 </head>
 
 <body>
-
-
+<h2><%= request.getParameter("id")%></h2>
+	
 	<form:form method="POST" action="fifa"
 		modelAttribute="stadium">
 		
