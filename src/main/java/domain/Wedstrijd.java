@@ -125,7 +125,8 @@ public class Wedstrijd implements Serializable{
 	@Override
 	public String toString() {
 		return "Wedstrijd [wedstrijd_id=" + wedstrijd_id + ", land1=" + land1 + ", land2=" + land2 + ", datetime="
-				+ datetime + ", stadium_id=" + stadium_id + "]";
+				+ datetime + ", datum=" + getDatum() + ", aftrap=" + getAftrap() + ", tickets=" + tickets + ", stadium_id="
+				+ stadium_id + "]";
 	}
 
 	@Override
