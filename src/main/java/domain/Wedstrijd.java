@@ -3,29 +3,21 @@ package domain;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-//Een wedstrijd
 @Entity
 @NamedQueries({
-//	@NamedQuery(name="Wedstrijd.getAllWedstrijdenByStadiumId", 
-//			query = "SELECT w FROM Wedstrijd w JOIN w.stadium WHERE w.stadium_id = :stadium_id"
-//					+ "ORDER BY w.wedstrijd_id")})
 	@NamedQuery(name="Wedstrijd.getAllWedstrijdenByStadiumId", 
 			query = "SELECT w FROM Wedstrijd w WHERE w.stadium_id = :stadium_id "
 					+ "ORDER BY w.wedstrijd_id")
@@ -37,10 +29,9 @@ public class Wedstrijd implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long wedstrijd_id; //unieke sleutel
-
-    private String land1, land2; //2 landen van de wedstrijd
-    
+    private Long wedstrijd_id;
+	
+    private String land1, land2;
     private Timestamp datetime;
    
     @Transient
@@ -48,11 +39,8 @@ public class Wedstrijd implements Serializable{
     @Transient
     private String aftrap;
     
- 
-
-	private int tickets;
-    
     private Long stadium_id;
+    private int tickets;
 
     public Long getStadium_id() {
 		return stadium_id;
@@ -64,6 +52,7 @@ public class Wedstrijd implements Serializable{
     protected Wedstrijd() {
     	
     }
+    
 	public Wedstrijd(Long wedstrijd_id, String land1, String land2, Timestamp datetime, Long stadium_id) {
 		super();
 		this.wedstrijd_id = wedstrijd_id;
@@ -120,7 +109,6 @@ public class Wedstrijd implements Serializable{
 	public Timestamp getDatetime() {
 		return datetime;
 	}
-
 
 	@Override
 	public String toString() {

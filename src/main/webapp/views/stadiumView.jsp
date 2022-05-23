@@ -27,7 +27,3 @@
 
 </body>
 </html>
-
-<%-- 			<a href="http://localhost:8080/${stadiumUrlName}/?id=${wedstrijd.wedstrijd_id}/${wedstrijd.land1}-${wedstrijd.land2}"> --%>
-<%-- 				${wedstrijd.wedstrijd_id} --%>
-<%-- 			</a>${wedstrijd.land1} ${wedstrijd.land2} ${wedstrijd.datetime} ${wedstrijd.datum}  ${wedstrijd.aftrap} ${wedstrijd.tickets}</li> --%>
