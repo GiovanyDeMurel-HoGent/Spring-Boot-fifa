@@ -30,11 +30,12 @@ public class StadiumController {
 	
 	@GetMapping()
 	public String showStadiumPage(HttpSession session, @ModelAttribute Wedstrijd wedstrijd, BindingResult result, Model model) {
-		//Stadium stadium = (Stadium) model.getAttribute("stadium");
-		//model.addAttribute("stadium",)
-		Stadium stadium = (Stadium) session.getAttribute("stadium");
+		Stadium stadium;
+		if (session.getAttribute("stadium") != null) {
+		stadium = (Stadium) session.getAttribute("stadium");
 		model.addAttribute("stadiumUrlName", stadium.getName().replaceAll("\\s", "").replace("Stadium", ""));
 		model.addAttribute("wedstrijden",wedstrijdDao.getAllWedstrijdenByStadiumId(stadium.getStadium_id()));
+		}
 		//model.addAttribute("wedstrijden", stadiumDao.) );
 		return "stadiumView";
 	}

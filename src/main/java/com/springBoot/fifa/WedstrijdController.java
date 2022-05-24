@@ -34,6 +34,7 @@ public class WedstrijdController {
 		//model.addAttribute("id", (long) Integer.parseInt(request.getParameter("id")));
 		//System.out.println(id);
 		//model.addAttribute("wedstrijd", wedstrijdDao.get((long) Integer.parseInt(request.getParameter("id"))));
+		System.out.println(request.getParameter("id"));
 		model.addAttribute("ticketform", new TicketForm());
 		return "wedstrijdView";
 	}
