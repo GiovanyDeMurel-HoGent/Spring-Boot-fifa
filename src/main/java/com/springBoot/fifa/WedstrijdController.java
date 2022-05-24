@@ -31,9 +31,7 @@ public class WedstrijdController {
 	
 	@GetMapping
 	public String showWedstrijdPage(Model model, HttpServletRequest request) {
-		//model.addAttribute("id", (long) Integer.parseInt(request.getParameter("id")));
-		//System.out.println(id);
-		//model.addAttribute("wedstrijd", wedstrijdDao.get((long) Integer.parseInt(request.getParameter("id"))));
+		model.addAttribute("wedstrijd", wedstrijdDao.get((long) Integer.parseInt(request.getParameter("id"))));
 		System.out.println(request.getParameter("id"));
 		model.addAttribute("ticketform", new TicketForm());
 		return "wedstrijdView";
@@ -42,14 +40,14 @@ public class WedstrijdController {
 	@PostMapping()
 	public String onSubmit(@Valid @ModelAttribute("ticketform") TicketForm ticketform, BindingResult result, 
 			HttpSession session) {
-		//ticketFormValidation.validate(ticketform, result);
+		ticketFormValidation.validate(ticketform, result);
 		if (result.hasErrors()) {
             return "wedstrijdView";
         }
-		
+		String gekochteTickets = Integer.toString( ticketform.getTickets())+" aantal tickets aangekocht";
 //		wedstrijdTicket.setConfirmPassword(null);
 //		wedstrijdTicket.setConfirmPassword(null);
-		session.setAttribute("aantalGekochteTickets", "x aantal tickets aangekocht");
+		session.setAttribute("aantalGekochteTickets", gekochteTickets);
 		return "redirect:/fifa";
 		
 	}

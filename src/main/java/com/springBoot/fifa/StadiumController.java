@@ -36,7 +36,6 @@ public class StadiumController {
 		model.addAttribute("stadiumUrlName", stadium.getName().replaceAll("\\s", "").replace("Stadium", ""));
 		model.addAttribute("wedstrijden",wedstrijdDao.getAllWedstrijdenByStadiumId(stadium.getStadium_id()));
 		}
-		//model.addAttribute("wedstrijden", stadiumDao.) );
 		return "stadiumView";
 	}
 	
