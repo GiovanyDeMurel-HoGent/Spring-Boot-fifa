@@ -1,9 +1,7 @@
 package domain;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import validator.ValidEmail;
@@ -25,8 +23,15 @@ public class TicketForm {
 	@Min(0)
 	private int voetbalCode2;
 	
+	private int availableTickets;
 	
 	
+	public int getAvailableTickets() {
+		return availableTickets;
+	}
+	public void setAvailableTickets(int availableTickets) {
+		this.availableTickets = availableTickets;
+	}
 	public int getTickets() {
 		return tickets;
 	}

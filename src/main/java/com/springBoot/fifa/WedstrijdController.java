@@ -15,10 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import domain.TicketForm;
 import domain.Wedstrijd;
-import domain.WedstrijdTicket;
 import service.WedstrijdDao;
 import validator.TicketFormValidation;
-import validator.WedstrijdTicketValidation;
 
 @Controller
 @RequestMapping("*/*")
@@ -30,21 +28,29 @@ public class WedstrijdController {
 	@Autowired TicketFormValidation ticketFormValidation;
 	
 	@GetMapping
-	public String showWedstrijdPage(Model model, HttpServletRequest request) {
-		model.addAttribute("wedstrijd", wedstrijdDao.get((long) Integer.parseInt(request.getParameter("id"))));
-		System.out.println(request.getParameter("id"));
-		model.addAttribute("ticketform", new TicketForm());
+	public String showWedstrijdPage(Model model, HttpServletRequest request, HttpSession session) {
+		Wedstrijd wedstrijd = new Wedstrijd();
+		wedstrijd = wedstrijdDao.get((long) Integer.parseInt(request.getParameter("id")));
+		session.setAttribute("wedstrijd", wedstrijd);
+		TicketForm ticketform = new TicketForm();
+		ticketform.setAvailableTickets(wedstrijd.getTickets());
+		model.addAttribute("ticketform", ticketform);
 		return "wedstrijdView";
 	}
 	
 	@PostMapping()
 	public String onSubmit(@Valid @ModelAttribute("ticketform") TicketForm ticketform, BindingResult result, 
-			HttpSession session) {
+		HttpSession session, Model model) {
+		
 		ticketFormValidation.validate(ticketform, result);
 		if (result.hasErrors()) {
             return "wedstrijdView";
         }
-		String gekochteTickets = Integer.toString( ticketform.getTickets())+" aantal tickets aangekocht";
+		Wedstrijd wedstrijd = (Wedstrijd) session.getAttribute("wedstrijd");
+		wedstrijd.setTickets(wedstrijd.getTickets()-ticketform.getTickets());
+		
+		wedstrijdDao.update(wedstrijd);
+		String gekochteTickets = Integer.toString( ticketform.getTickets())+" tickets werden aangekocht";
 //		wedstrijdTicket.setConfirmPassword(null);
 //		wedstrijdTicket.setConfirmPassword(null);
 		session.setAttribute("aantalGekochteTickets", gekochteTickets);
@@ -52,4 +58,3 @@ public class WedstrijdController {
 		
 	}
 }
-//@ModelAttribute("ticketform")

@@ -53,7 +53,7 @@ public class Wedstrijd implements Serializable{
 		this.stadium_id = stadium_id;
 	}
     
-    protected Wedstrijd() {
+    public Wedstrijd() {
     	
     }
     
@@ -87,6 +87,9 @@ public class Wedstrijd implements Serializable{
 		return tickets;
 	}
 
+	public void setTickets(int tickets) {
+		this.tickets = tickets;
+	}
 	public Long getWedstrijd_id() {
 		return wedstrijd_id;
 	}

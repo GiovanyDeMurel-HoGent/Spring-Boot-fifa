@@ -12,7 +12,6 @@ import service.StadiumDao;
 import service.VoetbalServiceImpl;
 import service.WedstrijdDao;
 import validator.TicketFormValidation;
-import validator.WedstrijdTicketValidation;
 import validator.WedstrijdValidation;
 
 @SpringBootApplication
@@ -27,11 +26,6 @@ public class FifaWorldCupApplication implements WebMvcConfigurer{
 	public WedstrijdDao wedstrijdDao() {
 		return new JpaWedstrijdDao();
 	}
-	
-//	@Bean
-//	public JpaStadiumDao JpaStadiumDao() {
-//		return new JpaStadiumDao();
-//	}
 	
 	@Bean
 	public VoetbalServiceImpl helloService() {
