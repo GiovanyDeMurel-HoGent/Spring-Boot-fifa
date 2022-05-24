@@ -28,11 +28,11 @@ public class TicketFormValidation implements Validator {
 		
 		if(voetbalCode1 >= voetbalCode2) {
 			errors.rejectValue("voetbalCode1",
-                    "",
-                    "voetbalCode1 moet kleiner zijn dan voetbalCode2");
+                    "ticketform.voetbalCode1.smaller",
+                    "voetbalCode1 must be smaller than voetbalCode2");
 			errors.rejectValue("voetbalCode2",
-                    "",
-                    "voetbalCode2 moet groter zijn dan voetbalCode1");
+                    "ticketform.voetbalCode1.greater",
+                    "voetbalCode2 must be greater than voetbalCode1");
         }
 	}
 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +9,10 @@
 <title>FIFA</title>
 </head>
 <body>
-
+	
 	<h3>${aantalGekochteTickets}</h3>
+	<spring:message code="label.welcome" var="welcome"/>
+	<H3>${welcome}</H3>
 	<H2>${stadiumList}</H2>
 	
 	 <form:form method="POST" action="fifa"
