@@ -1,5 +1,6 @@
 package com.springBoot.fifa;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,19 +19,20 @@ import service.WedstrijdDao;
 
 @Controller
 @SessionAttributes("stadium")
-@RequestMapping("/*")
+@RequestMapping("fifa/*")
 public class StadiumController {
 
 	@Autowired
 	private WedstrijdDao wedstrijdDao;
 	
 	@GetMapping()
-	public String showStadiumPage(HttpSession session, @ModelAttribute Wedstrijd wedstrijd, BindingResult result, Model model) {
+	public String showStadiumPage(HttpSession session, @ModelAttribute Wedstrijd wedstrijd, BindingResult result, 
+			Model model, HttpServletRequest request) {
 		Stadium stadium;
 		if (session.getAttribute("stadium") != null) {
 		stadium = (Stadium) session.getAttribute("stadium");
-		model.addAttribute("stadiumUrlName", stadium.getName().replaceAll("\\s", "").replace("Stadium", ""));
-		model.addAttribute("wedstrijden",wedstrijdDao.getAllWedstrijdenByStadiumId(stadium.getStadium_id()));
+		session.setAttribute("stadiumUrlName", stadium.getName().replaceAll("\\s", "").replace("Stadium", ""));
+		session.setAttribute("wedstrijden",wedstrijdDao.getAllWedstrijdenByStadiumId(stadium.getStadium_id()));
 		}
 		return "stadiumView";
 	}

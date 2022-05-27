@@ -14,7 +14,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import service.VoetbalServiceImpl;
 
 @Entity
 @Table(name = "stadium")
@@ -38,6 +37,12 @@ public class Stadium implements Serializable {
 //	public Long getID() {
 //		return stadium_id;
 //	}
+
+	public Stadium(Long stadium_id, String name) {
+		super();
+		this.stadium_id = stadium_id;
+		this.name = name;
+	}
 
 	public Long getStadium_id() {
 		return stadium_id;

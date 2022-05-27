@@ -7,5 +7,82 @@ img{
 }
 
 .error{
-	color:#f33;
+	color:rgb(235, 100, 41);
+	font-size:1em;
 }
+
+.displayBox{
+	padding: 2em;
+	background-color:#C0C0C4;
+	width:max-content;
+	height: max-content;
+	margin: auto;
+	margin-top: 3em;
+	text-align: center;
+}
+
+.displayBox > h2,p{
+	color: #3B3B40;
+	font-size:1.5rem;
+	font-weight:bold;
+}
+
+.dropdown{
+	margin: auto;
+	width: 500px;
+	height: 2.5em;
+	display: block;
+	font-size: 1.52em;
+	text-align: center;
+	margin-bottom: 125px;
+}
+
+.fifaButton{
+	margin: auto;
+	width: 500px;
+	padding:1em;
+	bottom: 10px;
+}
+
+ul{
+	margin-top:2em;
+	list-style-type:none;
+	padding: 0;
+	text-align: left;
+	
+}
+
+li a{
+	color: #3B3B40;
+	font-size:1.1em;
+	font-weight:bold;
+	display: block;
+	text-decoration:none;
+	background-color:#E6E6E9;
+	padding:1.5em 2em;
+	transition: 0.5s;
+	;
+}
+
+li a:hover{
+	background-color:#FFB347;
+	transition: 0s;
+}
+
+.wedstrijdDisplayBox{
+	color: #3B3B40;
+	width:max-content;
+	height: max-content;
+	padding: 2em;
+	background-color:#C0C0C4;
+	margin: auto;
+	margin-top: 3em;
+}
+
+.wedstrijdDisplayBox h2{
+	text-align: center;
+}
+.wedstrijdDisplayBox p{
+	font-size:1em;
+}
+

@@ -2,24 +2,33 @@ package domain;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
 
 import validator.ValidEmail;
 
 public class TicketForm {
 
-	@NotNull
-	@Min(1)
-	@Max(25)
+//	@Pattern(regexp = "[0-9]+" /*, message="{UnexpectedTypeException}"*/)
+	@NotNull(message="{ticketform.empty}")
+	@NumberFormat(style=Style.NUMBER)
+	@Min(value=1, message="{ticketform.tickets.range}")
+	@Max(value=25, message="{ticketform.tickets.range}")
 	private int tickets;
 	
-	@ValidEmail
+	@NotEmpty(message="{ticketform.empty}")
+	@ValidEmail(message="{ticketform.email.valid}")
 	private String email;
 	
-	@NotNull
+	@NotNull(message="{ticketform.empty}")
+	@NumberFormat(style=Style.NUMBER)
 	@Min(0)
 	private int voetbalCode1;
-	@NotNull
+	@NotNull(message="{ticketform.empty}")
+	@NumberFormat(style=Style.NUMBER)
 	@Min(0)
 	private int voetbalCode2;
 	

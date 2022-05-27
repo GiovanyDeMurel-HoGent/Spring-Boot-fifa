@@ -1,33 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Stadium placeholder</title>
+<spring:url value="/css/style.css" var="urlCss"/>
+<link rel="stylesheet" href="${urlCss}" type="text/css" />
+<title>Stadium</title>
 </head>
 
 <body>
+	<spring:message code="stadium.listofgames" var="listofgames"/>
+	<spring:message code="stadium.logout" var="logout"/>
+	<spring:message code="ticketform.availabletickets" var="available"/>
+	<spring:message code="ticketform.availabletickets" var="available"/>
+	
+	<div class="displayBox">
 	<h2>${stadium.name}</h2>
-	<p>Lijst van wedstrijden in dit stadium:<p>
-	<br>	
+	<p>${listofgames}<p>
+	<ul>
 	<c:forEach var="wedstrijd" items="${wedstrijden}">
 		<li>
-			<c:url value="http://localhost:8080/${stadiumUrlName}/${wedstrijd.land1}-${wedstrijd.land2}"
+			<c:url value="http://localhost:8080/fifa/${stadiumUrlName}/${wedstrijd.land1}-${wedstrijd.land2}"
 			 var="wedstrijdUrl"
 			 scope="page"
 			 >
 			<c:param name="id" value="${wedstrijd.wedstrijd_id}"></c:param>
-		</c:url>
-		<h4><a href="${wedstrijdUrl}">${wedstrijd.wedstrijd_id}</a>${wedstrijd.land1}-${wedstrijd.land2} ${wedstrijd.datum} ${wedstrijd.aftrap} ${wedstrijd.tickets}</h4>
+			</c:url>
+		<a href="${wedstrijdUrl}">
+			${wedstrijd.wedstrijd_id}   ${wedstrijd.land1}-${wedstrijd.land2} ${wedstrijd.datum} ${wedstrijd.aftrap} ${wedstrijd.tickets}
+		</a>
+		
 		</li>
-
 	</c:forEach>
-	<!-- 	magic! -->
-	<form action='logout' method='post'>
-	<input type="submit" value="Log out" />
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>            
-	</form>
+	</ul>
+	</div>
 </body>
 </html>

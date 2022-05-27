@@ -19,12 +19,13 @@ public class TicketFormValidation implements Validator {
 		TicketForm ticketForm = (TicketForm) target;
 		int voetbalCode1 = ticketForm.getVoetbalCode1();
 		int voetbalCode2 = ticketForm.getVoetbalCode2();
-//		int availableTickets = ticketForm.getAvailableTickets();
-		
-//		if(ticketForm.getAvailableTickets()-ticketForm.getTickets() < 0) {
-//			errors.rejectValue("tickets", "tickets.ticketForm.tickets",
-//                    "Te weinig tickets beschikbaar: "+availableTickets+" tickets beschikbaar");
-//		}
+		int availableTickets = ticketForm.getAvailableTickets();
+		System.out.println("validateFORMAvailabletickets:  "+availableTickets);
+		System.out.println("validateFORMTickets:  "+ticketForm.getTickets());
+		if(availableTickets-ticketForm.getTickets() < 0) {
+			errors.rejectValue("tickets", "ticketform.availabletickets.toofew",
+                    "not enough tickets available.");
+		}
 		
 		if(voetbalCode1 >= voetbalCode2) {
 			errors.rejectValue("voetbalCode1",
